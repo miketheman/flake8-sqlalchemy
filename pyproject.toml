@@ -1,0 +1,65 @@
+[tool.poetry]
+name = "flake8-sqlalchemy"
+version = "0.1.0"
+description = "A flake8 plugin to detect issues with SQLAlchemy code"
+authors = ["Mike Fiedler <miketheman@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+keywords = ["flake8", "lint", "sqlalchemy"]
+repository = "https://github.com/miketheman/flake8-sqlalchemy"
+packages = [{include = "flake8_sqlalchemy"}]
+include = [
+  { path = "LICENSE.md" },
+  { path = "README.md" },
+  { path = "tests", format = "sdist" },
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Framework :: Flake8",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+]
+
+[tool.poetry.plugins]
+[tool.poetry.plugins."flake8.extension"]
+"SQA" = "flake8_sqlalchemy:Plugin"
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+flake8 = "^6.0.0"
+
+[tool.poetry.group.dev.dependencies]
+astpretty = "^3.0.0"
+mypy = "^1.2.0"
+pytest = "^7.3.0"
+pytest-cov = "^4.0.0"
+sqlalchemy = "^1.4"
+
+[tool.coverage.run]
+branch = true
+source = ["flake8_sqlalchemy"]
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+addopts = "--cov=flake8_sqlalchemy --cov-report=term-missing"
+
+[tool.vulture]
+paths = ["flake8_sqlalchemy"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
