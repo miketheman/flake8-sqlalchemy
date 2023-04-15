@@ -1,4 +1,4 @@
-# flake8-SQAlchemy
+# flake8-sqlalchemy
 
 [![PyPI current version](https://img.shields.io/pypi/v/flake8-sqlalchemy.svg)](https://pypi.python.org/pypi/flake8-sqlalchemy)
 [![Python Support](https://img.shields.io/pypi/pyversions/flake8-sqlalchemy.svg)](https://pypi.python.org/pypi/flake8-sqlalchemy)
