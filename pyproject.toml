@@ -45,7 +45,7 @@ astpretty = "^3.0.0"
 mypy = "^1.2.0"
 pytest = "^7.3.0"
 pytest-cov = "^4.0.0"
-sqlalchemy = "^1.4"
+sqlalchemy = "^2.0"
 
 [tool.coverage.run]
 branch = true
