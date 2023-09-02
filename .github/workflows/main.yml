@@ -20,6 +20,7 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
         allow-prereleases: true
+    - run: poetry env use ${{ matrix.python-version }}
     - run: poetry install
     - run: poetry run mypy -p flake8_sqlalchemy
     - run: poetry run pytest
