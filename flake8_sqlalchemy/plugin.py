@@ -7,7 +7,7 @@ from .issue import Issue
 
 
 class Visitor(ast.NodeVisitor):
-    checkers: Dict[str, List] = {
+    checkers: Dict[str, List[Any]] = {
         "Call": [
             ColumnCommentChecker(),
         ],
