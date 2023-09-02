@@ -57,6 +57,13 @@ profile = "black"
 [tool.pytest.ini_options]
 addopts = "--cov=flake8_sqlalchemy --cov-report=term-missing"
 
+[tool.mypy]
+show_error_codes = true
+strict = true
+warn_unused_configs = true
+warn_unused_ignores = true
+warn_unreachable = true
+
 [tool.vulture]
 paths = ["flake8_sqlalchemy"]
 
