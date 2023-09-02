@@ -38,7 +38,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.8.1"
-flake8 = "^6.0.0"
+flake8 = "^6.0"
 
 [tool.poetry.group.dev.dependencies]
 astpretty = "^3.0.0"
@@ -46,6 +46,13 @@ mypy = "^1.2.0"
 pytest = "^7.3.0"
 pytest-cov = "^4.0.0"
 sqlalchemy = "^2.0"
+
+# greenlet is a dependency of SQLAlchemy, unrelease Python 3.12-compatible
+# remove this once greenlet 3.0.0 is released.
+greenlet  = [
+  { version = "^3.0.0rc1", python = "^3.12.0rc1" },
+  { version = "<3.0.0a0", python = "<3.12" },
+]
 
 [tool.coverage.run]
 branch = true
