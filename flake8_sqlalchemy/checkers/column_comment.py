@@ -15,7 +15,9 @@ class SQA200(Issue):
 class ColumnCommentChecker(Checker):
     def run(self, node: ast.Call) -> List[Issue]:
         """
-        Checks if a `sqlalchemy.Column` is missing a `comment` keyword argument.
+        Checks if a column is missing a `comment` keyword argument on:
+        - `sqlalchemy.Column`
+        - `sqlalchemy.orm.mapped_column`
         """
         issues: List[Issue] = []
 
@@ -26,9 +28,7 @@ class ColumnCommentChecker(Checker):
 
     def is_column(self, node: ast.Call) -> bool:
         call_name = self.get_call_name(node)
-        if call_name == "Column":
-            return True
-        return False
+        return call_name in ["Column", "mapped_column"]
 
     def has_comment(self, node: ast.Call) -> bool:
         return self.has_keyword(node, "comment")

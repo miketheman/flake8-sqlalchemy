@@ -24,3 +24,33 @@ def test_column_comment_missing_fails(helpers):
         "5:12 SQA200 Column missing comment keyword argument",
         "6:12 SQA200 Column missing comment keyword argument",
     }
+
+
+class TestSqlAlchemyDeclarativeModel:
+    def test_mapped_column_passes(self, helpers):
+        sample_code = """
+            from sqlalchemy.orm import DeclarativeBase, mapped_column
+
+            class Base(DeclarativeBase):
+                pass
+
+            class MyModel(Base):
+                column = mapped_column(comment="Super Important!")
+        """
+        assert helpers.results(dedent(sample_code)) == set()
+
+    def test_mapped_column_missing_fails(self, helpers):
+        sample_code = """
+            from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+
+            class Base(DeclarativeBase):
+                pass
+
+            class MyModel(Base):
+                column: Mapped[str] = mapped_column()
+                unique_column: Mapped[str] = mapped_column(unique=True)
+        """
+        assert helpers.results(dedent(sample_code)) == {
+            "8:27 SQA200 Column missing comment keyword argument",
+            "9:34 SQA200 Column missing comment keyword argument",
+        }
