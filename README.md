@@ -75,6 +75,16 @@ class Users(Base):
     name = Column(String, comment="User name: first, middle, last")
 ```
 
+Also applies to `mapped_column`:
+
+```python
+class Users(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, comment="User ID from Auth Service")
+    name = mapped_column(String, comment="User name: first, middle, last")
+```
+
 ## License
 
 This project is licensed under the terms of the MIT license.
