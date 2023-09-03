@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "flake8-sqlalchemy"
-version = "0.1.0"
+version = "0.2.0"
 description = "A flake8 plugin to detect issues with SQLAlchemy code"
 authors = ["Mike Fiedler <miketheman@gmail.com>"]
 license = "MIT"
