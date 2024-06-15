@@ -85,6 +85,34 @@ class Users(Base):
     name = mapped_column(String, comment="User name: first, middle, last")
 ```
 
+### `SQA300` - Use `back_populates` instead of `backref` in relationship
+
+Encourages the use of `back_populates` instead of `backref` in SQLAlchemy relationships to ensure clarity and consistency in bidirectional relationships.
+
+#### Bad
+
+```python
+class Parent(Base):
+    __tablename__ = "parent"
+    id = Column(Integer, primary_key=True)
+    children = relationship("Child", backref="parent")
+```
+
+#### Good
+
+```python
+class Parent(Base):
+    __tablename__ = "parent"
+    id = Column(Integer, primary_key=True)
+    children = relationship("Child", back_populates="parent")
+
+class Child(Base):
+    __tablename__ = "child"
+    id = Column(Integer, primary_key=True)
+    parent_id = Column(Integer, ForeignKey("parent.id"))
+    parent = relationship("Parent", back_populates="children")
+```
+
 ## License
 
 This project is licensed under the terms of the MIT license.
