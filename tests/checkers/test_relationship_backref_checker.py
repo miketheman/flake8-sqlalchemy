@@ -1,5 +1,6 @@
 from textwrap import dedent
 
+
 def test_relationship_backref_passes(helpers):
     sample_code = """
         from sqlalchemy.orm import relationship
@@ -11,6 +12,7 @@ def test_relationship_backref_passes(helpers):
             parent = relationship("Parent", back_populates="children")
     """
     assert helpers.results(dedent(sample_code)) == set()
+
 
 def test_relationship_backref_fails(helpers):
     sample_code = """

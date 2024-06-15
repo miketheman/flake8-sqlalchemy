@@ -3,8 +3,8 @@
 import ast
 from typing import List
 
-from ._base import Checker
 from ..issue import Issue
+from ._base import Checker
 
 
 class SQA300(Issue):

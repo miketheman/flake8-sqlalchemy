@@ -2,7 +2,11 @@ import ast
 import importlib.metadata
 from typing import Any, Dict, Generator, List, Tuple, Type
 
-from .checkers import ColumnCommentChecker, ImportAliasChecker, RelationshipBackrefChecker
+from .checkers import (
+    ColumnCommentChecker,
+    ImportAliasChecker,
+    RelationshipBackrefChecker,
+)
 from .issue import Issue
 
 
