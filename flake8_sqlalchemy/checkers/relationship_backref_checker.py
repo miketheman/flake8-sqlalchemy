@@ -15,7 +15,8 @@ class SQA300(Issue):
 class RelationshipBackrefChecker(Checker):
     def run(self, node: ast.Call) -> List[Issue]:
         """
-        Checks if a relationship() call uses `backref` and suggests `back_populates` instead.
+        Checks if a relationship() call uses `backref` and suggests
+        `back_populates` instead.
         """
         issues: List[Issue] = []
 
@@ -27,7 +28,8 @@ class RelationshipBackrefChecker(Checker):
     @staticmethod
     def is_relationship_with_backref(node: ast.Call) -> bool:
         """
-        Determines if the given node represents a relationship() call with a `backref` argument.
+        Determines if the given node represents a relationship() call with a
+        `backref` argument.
         """
         if RelationshipBackrefChecker.get_call_name(node) != "relationship":
             return False
