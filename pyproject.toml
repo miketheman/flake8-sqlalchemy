@@ -38,7 +38,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.8.1"
-flake8 = "^6.0"
+flake8 = ">=6,<8"
 
 [tool.poetry.group.dev.dependencies]
 astpretty = "^3.0.0"
