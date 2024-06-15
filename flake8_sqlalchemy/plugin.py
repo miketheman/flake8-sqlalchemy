@@ -2,7 +2,7 @@ import ast
 import importlib.metadata
 from typing import Any, Dict, Generator, List, Tuple, Type
 
-from .checkers import ColumnCommentChecker, ImportAliasChecker
+from .checkers import ColumnCommentChecker, ImportAliasChecker, RelationshipBackrefChecker
 from .issue import Issue
 
 
@@ -10,6 +10,7 @@ class Visitor(ast.NodeVisitor):
     checkers: Dict[str, List[Any]] = {
         "Call": [
             ColumnCommentChecker(),
+            RelationshipBackrefChecker(),
         ],
         "Import": [
             ImportAliasChecker(),
