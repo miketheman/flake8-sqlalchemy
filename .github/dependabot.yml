@@ -6,8 +6,8 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 10
     groups:
-      - name: "all"
-        patterns: ["*"]
+      name: "all"
+      patterns: ["*"]
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
