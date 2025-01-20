@@ -1,6 +1,7 @@
 import ast
 import importlib.metadata
-from typing import Any, Dict, Generator, List, Tuple, Type
+from collections.abc import Generator
+from typing import Any
 
 from .checkers import (
     ColumnCommentChecker,
@@ -11,7 +12,7 @@ from .issue import Issue
 
 
 class Visitor(ast.NodeVisitor):
-    checkers: Dict[str, List[Any]] = {
+    checkers: dict[str, list[Any]] = {
         "Call": [
             ColumnCommentChecker(),
             RelationshipBackrefChecker(),
@@ -22,7 +23,7 @@ class Visitor(ast.NodeVisitor):
     }
 
     def __init__(self) -> None:
-        self.issues: List[Issue] = []
+        self.issues: list[Issue] = []
 
     def capture_issues_from(self, visitor: str, node: ast.AST) -> None:
         for checker in self.checkers[visitor]:
@@ -45,7 +46,7 @@ class Plugin:
     def __init__(self, tree: ast.AST) -> None:
         self._tree = tree
 
-    def run(self) -> Generator[Tuple[int, int, str, Type[Any]], None, None]:
+    def run(self) -> Generator[tuple[int, int, str, type[Any]], None, None]:
         visitor = Visitor()
         visitor.visit(self._tree)
 

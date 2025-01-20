@@ -1,7 +1,6 @@
 """Checker for detecting `backref` usage in SQLAlchemy relationships."""
 
 import ast
-from typing import List
 
 from ..issue import Issue
 from ._base import Checker
@@ -13,12 +12,12 @@ class SQA300(Issue):
 
 
 class RelationshipBackrefChecker(Checker):
-    def run(self, node: ast.Call) -> List[Issue]:
+    def run(self, node: ast.Call) -> list[Issue]:
         """
         Checks if a relationship() call uses `backref` and suggests
         `back_populates` instead.
         """
-        issues: List[Issue] = []
+        issues: list[Issue] = []
 
         if self.is_relationship_with_backref(node):
             issues.append(SQA300(node.lineno, node.col_offset))

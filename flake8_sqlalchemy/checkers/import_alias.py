@@ -1,7 +1,6 @@
 """Checks that the sqlalchemy import is aliased as `sa` or `db`."""
 
 import ast
-from typing import List
 
 from ..issue import Issue
 from ._base import Checker
@@ -13,12 +12,12 @@ class SQA100(Issue):
 
 
 class ImportAliasChecker(Checker):
-    def run(self, node: ast.Import) -> List[Issue]:
+    def run(self, node: ast.Import) -> list[Issue]:
         """
         Checks if the `sqlalchemy` module is imported with an alias
         other than `sa` or `db`.
         """
-        issues: List[Issue] = []
+        issues: list[Issue] = []
 
         for alias in node.names:
             if alias.name == "sqlalchemy" and alias.asname not in (None, "sa", "db"):
