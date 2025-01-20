@@ -13,5 +13,5 @@ class Checker:
             return node.func.id
         return None
 
-    def run(self, node: Any) -> List[Issue]:  # TODO correct type hint
+    def run(self, node: Any) -> list[Issue]:  # TODO correct type hint
         raise NotImplementedError

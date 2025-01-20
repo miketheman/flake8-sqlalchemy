@@ -13,13 +13,13 @@ class SQA200(Issue):
 
 
 class ColumnCommentChecker(Checker):
-    def run(self, node: ast.Call) -> List[Issue]:
+    def run(self, node: ast.Call) -> list[Issue]:
         """
         Checks if a column is missing a `comment` keyword argument on:
         - `sqlalchemy.Column`
         - `sqlalchemy.orm.mapped_column`
         """
-        issues: List[Issue] = []
+        issues: list[Issue] = []
 
         if self.is_column(node) and not self.has_comment(node):
             issues.append(SQA200(node.lineno, node.col_offset))
