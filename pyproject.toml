@@ -30,7 +30,7 @@ classifiers = [
 requires-python = ">=3.9"
 dependencies = [
     "flake8 >=6, <8",
-    "sqlalchemy",
+    "sqlalchemy >=2",
 ]
 
 [dependency-groups]

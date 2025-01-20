@@ -137,7 +137,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "flake8", specifier = ">=6,<8" },
-    { name = "sqlalchemy" },
+    { name = "sqlalchemy", specifier = ">=2" },
 ]
 
 [package.metadata.requires-dev]
