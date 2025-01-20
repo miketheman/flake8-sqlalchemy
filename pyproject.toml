@@ -1,18 +1,13 @@
-[tool.poetry]
+[project]
 name = "flake8-sqlalchemy"
 version = "0.2.0"
 description = "A flake8 plugin to detect issues with SQLAlchemy code"
-authors = ["Mike Fiedler <miketheman@gmail.com>"]
+authors = [
+    { name = "Mike Fiedler", email = "miketheman@gmail.com" }
+]
 license = "MIT"
 readme = "README.md"
 keywords = ["flake8", "lint", "sqlalchemy"]
-repository = "https://github.com/miketheman/flake8-sqlalchemy"
-packages = [{include = "flake8_sqlalchemy"}]
-include = [
-  { path = "LICENSE.md" },
-  { path = "README.md" },
-  { path = "tests", format = "sdist" },
-]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Framework :: Flake8",
@@ -32,21 +27,26 @@ classifiers = [
     "Topic :: Utilities",
     "Typing :: Typed",
 ]
+requires-python = ">=3.9"
+dependencies = [
+    "flake8 >=6, <8",
+    "sqlalchemy",
+]
 
-[tool.poetry.plugins]
-[tool.poetry.plugins."flake8.extension"]
-"SQA" = "flake8_sqlalchemy:Plugin"
+[dependency-groups]
+dev = [
+  "astpretty >=3.0.0",
+  "mypy >=1.2.0",
+  "pytest >=7.3, <9.0",
+  "pytest-cov >=4, <6",
+  "sqlalchemy >=2.0",
+]
 
-[tool.poetry.dependencies]
-python = "^3.9.0"
-flake8 = ">=6,<8"
+[project.entry-points."flake8.extension"]
+SQA = "flake8_sqlalchemy:Plugin"
 
-[tool.poetry.group.dev.dependencies]
-astpretty = "^3.0.0"
-mypy = "^1.2.0"
-pytest = ">=7.3,<9.0"
-pytest-cov = ">=4,<6"
-sqlalchemy = "^2.0"
+[project.urls]
+Repository = "https://github.com/miketheman/flake8-sqlalchemy"
 
 [tool.coverage.run]
 branch = true
@@ -69,5 +69,5 @@ warn_unreachable = true
 paths = ["flake8_sqlalchemy"]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
