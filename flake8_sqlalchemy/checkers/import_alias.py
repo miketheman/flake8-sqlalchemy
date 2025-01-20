@@ -1,7 +1,6 @@
 """Checks that the sqlalchemy import is aliased as `sa` or `db`."""
 
 import ast
-from typing import List
 
 from ..issue import Issue
 from ._base import Checker

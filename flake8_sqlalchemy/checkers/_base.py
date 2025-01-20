@@ -1,5 +1,5 @@
 import ast
-from typing import Any, List, Optional
+from typing import Any, Optional
 
 from ..issue import Issue
 

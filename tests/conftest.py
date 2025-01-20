@@ -1,7 +1,6 @@
 """Testing configs, utilities, and fixtures for the tests package."""
 
 import ast
-from typing import Set
 
 import pytest
 

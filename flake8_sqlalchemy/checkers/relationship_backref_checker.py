@@ -1,7 +1,6 @@
 """Checker for detecting `backref` usage in SQLAlchemy relationships."""
 
 import ast
-from typing import List
 
 from ..issue import Issue
 from ._base import Checker

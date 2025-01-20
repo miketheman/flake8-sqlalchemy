@@ -1,7 +1,6 @@
 """Checks that Columns have comments."""
 
 import ast
-from typing import List
 
 from ..issue import Issue
 from ._base import Checker

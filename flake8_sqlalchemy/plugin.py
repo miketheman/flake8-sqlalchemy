@@ -1,7 +1,7 @@
 import ast
 import importlib.metadata
 from collections.abc import Generator
-from typing import Any, Dict, List, Tuple, Type
+from typing import Any
 
 from .checkers import (
     ColumnCommentChecker,
