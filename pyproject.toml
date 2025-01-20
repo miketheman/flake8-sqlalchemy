@@ -21,10 +21,11 @@ classifiers = [
     "Natural Language :: English",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Software Development :: Quality Assurance",
     "Topic :: Software Development :: Testing",
@@ -37,7 +38,7 @@ classifiers = [
 "SQA" = "flake8_sqlalchemy:Plugin"
 
 [tool.poetry.dependencies]
-python = "^3.8.1"
+python = "^3.9.0"
 flake8 = ">=6,<8"
 
 [tool.poetry.group.dev.dependencies]
@@ -46,13 +47,6 @@ mypy = "^1.2.0"
 pytest = ">=7.3,<9.0"
 pytest-cov = ">=4,<6"
 sqlalchemy = "^2.0"
-
-# greenlet is a dependency of SQLAlchemy, unrelease Python 3.12-compatible
-# remove this once greenlet 3.0.0 is released.
-greenlet  = [
-  { version = "^3.0.0rc1", python = "^3.12.0rc1" },
-  { version = "<3.0.0a0", python = "<3.12" },
-]
 
 [tool.coverage.run]
 branch = true
