@@ -66,7 +66,7 @@ warn_unused_ignores = true
 warn_unreachable = true
 
 [tool.vulture]
-paths = ["flake8_sqlalchemy"]
+paths = ["src/flake8_sqlalchemy"]
 
 [build-system]
 requires = ["hatchling"]
