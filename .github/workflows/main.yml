@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions: {}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,16 +15,15 @@ jobs:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       with:
         persist-credentials: false
-    - name: Install poetry
-      run: pipx install poetry
-    - uses: actions/setup-python@v5
+    - name: Install the latest version of uv
+      uses: astral-sh/setup-uv@b5f58b2abc5763ade55e4e9d0fe52cd1ff7979ca # v5.2.1
+    - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
       with:
         python-version: ${{ matrix.python-version }}
         allow-prereleases: true
-    - run: poetry env use ${{ matrix.python-version }}
-    - run: poetry install
-    - run: poetry run mypy -p flake8_sqlalchemy
-    - run: poetry run pytest
+    - run: uv run mypy -p flake8_sqlalchemy
+    - run: uv run pytest
+    - run: uv build

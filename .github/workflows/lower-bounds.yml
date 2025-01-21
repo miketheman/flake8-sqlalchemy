@@ -1,0 +1,34 @@
+name: Test Earliest Dependencies
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+permissions: {}
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.9"]
+
+    steps:
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      with:
+        persist-credentials: false
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install the latest version of uv
+      uses: astral-sh/setup-uv@b5f58b2abc5763ade55e4e9d0fe52cd1ff7979ca # v5.2.1
+    - name: Install dependencies and force lowest bound
+      run: |
+        uv sync --upgrade --resolution lowest-direct
+    - name: List installed Python packages
+      run: uv pip list
+    - name: Run tests
+      run: uv run pytest
