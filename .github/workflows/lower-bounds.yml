@@ -29,6 +29,6 @@ jobs:
       run: |
         uv sync --upgrade --resolution lowest-direct
     - name: List installed Python packages
-      run: uv pip list
+      run: uv pip list | tee "$(tty)" | uvx tabulate --header --format github >> $GITHUB_STEP_SUMMARY
     - name: Run tests
       run: uv run pytest
