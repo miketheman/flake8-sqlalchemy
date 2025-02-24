@@ -20,7 +20,7 @@ jobs:
         python-version: "3.x"
         check-latest: true
     - name: Install the latest version of uv
-      uses: astral-sh/setup-uv@4db96194c378173c656ce18a155ffc14a9fc4355 # v5.2.2
+      uses: astral-sh/setup-uv@1edb52594c857e2b5b13128931090f0640537287 # v5.3.0
       with:
         enable-cache: false # Unnecessary for release workflow
     - name: Build
