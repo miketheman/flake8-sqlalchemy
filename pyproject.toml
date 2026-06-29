@@ -37,7 +37,7 @@ dependencies = [
 dev = [
   "astpretty >=3.0.0",
   "mypy >=1.2.0",
-  "pytest >=7.3, <9.0",
+  "pytest >=7.3, <10.0",
   "pytest-cov >=4, <8",
   "sqlalchemy >=2.0",
 ]
